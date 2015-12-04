@@ -1,0 +1,42 @@
+{
+	"manifest_version": 2,
+
+	"name": "Am-deals",
+	"description": "Filter Amazon todays deals",
+	"version": "1.0",
+  
+	"icons": { "128": "ico/icon128.png" },
+
+	"permissions": [
+		"storage",
+		"background",
+		"tabs"
+	],
+  
+	"background": {
+		"scripts": ["js/background.js"],
+		"persistent": false
+	},
+	
+	"browser_action": {
+		"default_icon": "ico/icon38.png"
+	},
+  
+	"content_scripts": [
+	{
+		"matches": ["*://*.amazon.com/", "*://*.amazon.co.uk/"],
+		"js": ["js/redirect.js"],
+		"run_at": "document_start"
+	},
+	{
+		"matches": ["*://www.amazon.com/*", "*://www.amazon.co.uk/*"],
+		"js": ["js/menu.js","js/script.js"],
+		"css": ["css/styles.css"],
+		"run_at": "document_start"
+    }
+	],
+  
+	"web_accessible_resources": ["ico/bigX.png"],
+	
+	"options_page": "options.html"
+}
