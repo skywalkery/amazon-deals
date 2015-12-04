@@ -160,7 +160,6 @@ function createMarkPanel() {
 	</ul>'.toDOM());
 	
 	document.body.appendChild('<nav id="c-menu--slide-right" class="c-menu c-menu--slide-right">\
-	  <button class="c-menu__close">&larr; Close Menu</button>\
 	  <ul class="c-menu__items">\
 		<li id="adMarkAll" class="c-menu__item"><a href="#" class="c-menu__link">Mark all</a></li>\
 		<li id="adUnmarkAll" class="c-menu__item"><a href="#" class="c-menu__link">Unmark all</a></li>\
@@ -180,6 +179,7 @@ function createMarkPanel() {
 
 	slideRightBtn.addEventListener('click', function(e) {
 		e.preventDefault;
+		slideRightBtn.style.display = 'none';
 		slideRight.open();
 	});
 	

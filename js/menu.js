@@ -40,7 +40,8 @@
     wrapper: '#o-wrapper',          // The content wrapper
     type: 'slide-left',             // The menu type
     menuOpenerClass: '.c-button',   // The menu opener class names (i.e. the buttons)
-    maskId: '#c-mask'               // The ID of the mask
+    maskId: '#c-mask',              // The ID of the mask
+	tabId: '#amdealsMenu'			// The ID of tab menu
   };
 
   /**
@@ -50,8 +51,9 @@
     this.body = document.body;
     this.wrapper = document.querySelector(this.options.wrapper);
     this.mask = document.querySelector(this.options.maskId);
+	this.tab = document.querySelector(this.options.tabId);
     this.menu = document.querySelector('#c-menu--' + this.options.type);
-    this.closeBtn = this.menu.querySelector('.c-menu__close');
+    this.closeBtns = this.menu.querySelectorAll('.c-menu__item');
     this.menuOpeners = document.querySelectorAll(this.options.menuOpenerClass);
     this._initEvents();
   };
@@ -61,14 +63,18 @@
    */
   Menu.prototype._initEvents = function() {
     // Event for clicks on the close button inside the menu.
-    this.closeBtn.addEventListener('click', function(e) {
-      e.preventDefault();
-      this.close();
-    }.bind(this));
+	for (var i = this.closeBtns.length - 1; i >= 0; i--) {
+		this.closeBtns[i].addEventListener('click', function(e) {
+		  e.preventDefault();
+		  this.tab.style.display = 'block';
+		  this.close();
+		}.bind(this));
+	}
 
     // Event for clicks on the mask.
     this.mask.addEventListener('click', function(e) {
       e.preventDefault();
+	  this.tab.style.display = 'block';
       this.close();
     }.bind(this));
   };
