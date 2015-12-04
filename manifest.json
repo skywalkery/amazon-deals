@@ -10,12 +10,14 @@
 	"permissions": [
 		"storage",
 		"background",
-		"tabs"
+		"tabs",
+		"webRequest",
+		"webRequestBlocking",
+		"*://*.amazon.com/*"
 	],
   
 	"background": {
-		"scripts": ["js/background.js"],
-		"persistent": false
+		"scripts": ["js/background.js"]
 	},
 	
 	"browser_action": {
@@ -24,12 +26,7 @@
   
 	"content_scripts": [
 	{
-		"matches": ["*://*.amazon.com/", "*://*.amazon.co.uk/"],
-		"js": ["js/redirect.js"],
-		"run_at": "document_start"
-	},
-	{
-		"matches": ["*://www.amazon.com/*", "*://www.amazon.co.uk/*"],
+		"matches": ["*://*.amazon.com/*", "*://*.amazon.co.uk/*"],
 		"js": ["js/menu.js","js/script.js"],
 		"css": ["css/styles.css"],
 		"run_at": "document_start"
