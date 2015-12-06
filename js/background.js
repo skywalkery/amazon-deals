@@ -64,12 +64,13 @@ function redirectToSmile(scheme, amazonurl, url) {
     var smileurl = "smile.amazon.com";
     return {
         // redirect to amazon smile append the rest of the url
-        redirectUrl : scheme + smileurl + getRelativeRedirectUrl(amazonurl, url) + "&" + redirectPostfix
+        redirectUrl : scheme + smileurl + getRelativeRedirectUrl(scheme, amazonurl, url) + "&" + redirectPostfix
     };
 }
 
-function getRelativeRedirectUrl(amazonurl, url) {
-    var relativeUrl = url.split(amazonurl)[1];
+function getRelativeRedirectUrl(scheme, amazonurl, url) {
+    var relativeUrl = url.substring((scheme + amazonurl).length);
+	alert(relativeUrl);
     var noRedirectIndicator = "sa-no-redirect=1";
     var paramStart = "?";
     var paramStartRegex = "\\" + paramStart;
