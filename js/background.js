@@ -70,7 +70,6 @@ function redirectToSmile(scheme, amazonurl, url) {
 
 function getRelativeRedirectUrl(scheme, amazonurl, url) {
     var relativeUrl = url.substring((scheme + amazonurl).length);
-	alert(relativeUrl);
     var noRedirectIndicator = "sa-no-redirect=1";
     var paramStart = "?";
     var paramStartRegex = "\\" + paramStart;
